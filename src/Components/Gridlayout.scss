@@ -1,0 +1,23 @@
+
+.grid-rows{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-cells{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 40px;
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    border: 2px solid #97ceee;
+    box-shadow: 0 .125rem .125rem  #97ceee;
+    &__img{
+        height: 100%;
+        width: 100%;
+    }
+}
