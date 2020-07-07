@@ -1,38 +1,63 @@
-import React,{useState} from 'react';
+import React from 'react';
 import './Navbar.scss';
-const items = [
-   {id: 1, value: 'DFS'},
-   {id: 2, value: 'BFS'},
-   {id: 3, value: 'A*'}
-  ];
-  
-const DropDown=({title})=>{
-    const [open,setOpen]=useState(false);
-    return (
-        <div className="dd-wrapper">
-            <div className="dd-wrapper__title">{title}</div>
-            {open&&(
-            <ul className="dd-wrapper__ul">
-                <li><button className="dd-content"><span>DFS</span></button></li> 
-                <li><button className="dd-content"><span>DFS</span></button></li> 
-                <li><button className="dd-content"><span>DFS</span></button></li> 
-            </ul>
-            )}
-        </div>
-    );
-}
+ 
 
-const navbar=()=>{
+const navbar=({setVisualize,turnOff,setAlgorithmType,clearWalls,setTurnOff,clearPath,visualize})=>{
+
+    const onAlgoChange=(e)=>{
+        setAlgorithmType(e.target.value);
+    }
+
+    const onVisualize=()=>{
+        setVisualize(true);
+        setTurnOff(true);
+    }
+
     return (
-        <nav className="navbar">
-            <ul className="navbar-nav">
-                <li className="dropdown-li"><DropDown title="Algorithm"/></li>
-                <li className="navbar-nav__li"><button>Mazes</button></li>
-                <li className="navbar-nav__li"><button>Visualize</button></li>
-                <li className="navbar-nav__li"><button>Reset Grid</button></li>
-                <li className="navbar-nav__li"><button>Clear Path</button></li>
-                <li className="navbar-nav__li"><button>Clear Walls</button></li>
-            </ul>
+        <nav className="content-header">
+            <select
+                className="content-header__select"
+                onChange={onAlgoChange}
+                id="algorithm"
+                disabled={turnOff}
+            >
+                <option value="BFS" defaultChecked> BFS </option>
+                <option value="DFS"> DFS </option>
+                <option value="A*"> A* </option>
+            </select>
+            <select
+                className="content-header__select"
+                // onChange={onAlgoChange}
+                disabled={turnOff}
+            >
+                <option value="B" defaultChecked> None </option>
+                {/* <option value="DFS"> DFS </option>
+                <option value="A*"> A* </option> */}
+            </select>
+            <button
+                className="content-header__button"
+                onClick={onVisualize}
+                disabled={turnOff}
+                type="button"
+            > 
+                Visualize!
+            </button>
+            <button 
+                className="content-header__button"
+                onClick={clearWalls}
+                disabled={turnOff}
+                type="button"
+            >
+                Clear Walls
+            </button>
+            <button
+                className="content-header__button"
+                onClick={clearPath}
+                disabled={visualize}
+                type="button"
+            >
+                Clear Path
+            </button>
         </nav>
     );
 }
