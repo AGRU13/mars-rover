@@ -1,5 +1,13 @@
 
 const BFS=(start,end,grid,list,parent)=>{
+    //using dom element manipulation so as to not cause any rerender
+    for(let i=0;i<20;i++)
+        for(let j=0;j<60;j++)
+            if(grid[i][j]===4){
+                grid[i][j]=0;
+                document.getElementById(`node-${i}-${j}`).className=`grid-cells`;
+            }
+        
     let queue=[start];
     let visited=Array(20).fill().map(()=>Array(60).fill(0));
     let dx=[1,-1,0,0],dy=[0,0,1,-1];

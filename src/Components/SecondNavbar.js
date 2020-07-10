@@ -26,6 +26,10 @@ const SecondNavbar=()=>{
                     <img className="nav-image" src={VisitedNodes} alt="cyan"/> 
                     <div className="nav-content">Visited Cells</div>
                 </li>
+                <li> 
+                    <div className="weights">W</div>
+                    <div className="nav-content">Weights</div>
+                </li>
                 <li>
                     <img className="nav-image" src={Walls} alt="cyan"/> 
                     <div className="nav-content">Walls</div>

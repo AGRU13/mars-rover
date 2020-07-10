@@ -7,7 +7,7 @@ const GridLayout=({start,end,grid,toggleWall,turnOff})=>{
         let temp=[];
         for(let j=0;j<60;j++){
             if(i===start[0]&&j===start[1]){
-                if(grid[i][j]==2){
+                if(grid[i][j]===2){
                     temp.push(
                         <div className="grid-cells__start__path" id={`node-${i}-${j}`} key={`${i}${j}`} >
                             {/* <img className="grid-cells__img" src={StartIcon} alt="->"/> */}
@@ -21,7 +21,7 @@ const GridLayout=({start,end,grid,toggleWall,turnOff})=>{
                     )
                 }
             }else if(i===end[0]&&j===end[1]){
-                if(grid[i][j]==2){
+                if(grid[i][j]===2){
                     temp.push(
                         <div className="grid-cells__end__path" id={`node-${i}-${j}`} key={`${i}${j}`}>
                             {/* <img className="grid-cells__img" src={EndIcon} alt="x"/> */}
@@ -34,7 +34,7 @@ const GridLayout=({start,end,grid,toggleWall,turnOff})=>{
                     </div>
                     )
                 }
-            }else if(grid[i][j]==0){
+            }else if(grid[i][j]===0){
                 temp.push(
                     <div className="grid-cells"
                         onMouseEnter={(e)=>{
@@ -49,7 +49,7 @@ const GridLayout=({start,end,grid,toggleWall,turnOff})=>{
                         id={`node-${i}-${j}`}>
                     </div>
                 )
-            }else if(grid[i][j]==1) {
+            }else if(grid[i][j]===1) {
                 temp.push(
                     <div className="grid-cells__walls" 
                     onMouseEnter={(e)=>{
@@ -64,15 +64,41 @@ const GridLayout=({start,end,grid,toggleWall,turnOff})=>{
                     id={`node-${i}-${j}`}>
                     </div>
                 )
-            }else if(grid[i][j]==2){
+            }else if(grid[i][j]===2){
                 temp.push(
                     <div className="grid-cells__path" key={`${i}${j}`} id={`node-${i}-${j}`}> 
                     </div>
                 )
-            }else{
+            }else if(grid[i][j]===3){
                 temp.push(
                     <div className="grid-cells__visited" key={`${i}${j}`} id={`node-${i}-${j}`}> 
                     </div>
+                )
+            }else if(grid[i][j]===4){
+                temp.push(
+                    <div className="grid-cells__weights" 
+                    onMouseEnter={(e)=>{
+                        if(!turnOff&&window.event.buttons===1)
+                            toggleWall(i,j,0);}
+                    }
+                    onClick={(e)=>{
+                        if(!turnOff)
+                            toggleWall(i,j,0)}
+                    }
+                    key={`${i}${j}`}
+                    id={`node-${i}-${j}`}>
+                        w
+                    </div>
+                )
+            }else if(grid[i][j]===5){
+                temp.push(
+                    <div className="grid-cells__weights__visited" key={`${i}${j}`} id={`node-${i}-${j}`}> 
+                    w</div>
+                )
+            }else{
+                temp.push(
+                    <div className="grid-cells__weights__path" key={`${i}${j}`} id={`node-${i}-${j}`}> 
+                    w</div>
                 )
             }
         }

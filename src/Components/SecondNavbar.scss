@@ -16,7 +16,7 @@
         li{
             height: 100%;
             width: 100px;
-            margin: auto 90px;
+            margin: auto 70px;
             display: flex;
             align-items: center;
             justify-items: center;
@@ -40,6 +40,18 @@
                 height: 30px;
                 width: auto;
                 margin-left: 10px;
+            }
+            .weights{
+                height: 30px;
+                width: 50px;
+                display: flex;
+                text-align: center;
+                white-space: nowrap;
+                align-items: center;
+                font-size: 30px;
+                font-weight: bold;
+                color: black;
+                background: #ffecb3;
             }
         }
 

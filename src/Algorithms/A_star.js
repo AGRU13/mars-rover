@@ -20,7 +20,12 @@ const A_star=(start,end,grid,visitedNodesInOrder,parent)=>{
             let x=current[1]+dx[i],y=current[2]+dy[i];
             if(x>=0&&y>=0&&x<20&&y<60){
                 if(visited[x][y]===0&&grid[x][y]!==1){
-                    let g=dist[current[1]][current[2]]+1;
+                    let g=0;
+                    if(grid[current[1]][current[2]]===4){
+                        g=dist[current[1]][current[2]]+10;
+                    }
+                    else g=dist[current[1]][current[2]]+1;
+
                     let f=g+heuristic[x][y];
                     if(g<dist[x][y]){     
                         visitedNodesInOrder.push([current[1],current[2]]);
