@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import './Gridlayout.scss';
 
 const GridLayout=({start,end,grid,toggleWall,turnOff})=>{

@@ -9,6 +9,8 @@ const DescriptionBar=({algorithmType})=>{
         description="Depth Frist Search does not gurantee the shortest path."
     }else if(algorithmType==="A*"){
         description="A* gives the shortest path,with a consistent heuristic A* does the fewest number of necessary expansions."
+    }else if(algorithmType==="DIJKSTRA"){
+        description="Dijkstra is one of the most used weighted graph algorithm which gives the shortest path"
     }
     return(
         <div className="description">

@@ -26,9 +26,6 @@ const stairPattern=async(start,end,grid,setGrid,setTurnOff,setMazeType)=>{
         x--;
         y++;
     }
-    // setMazeType("none");
-    // setTurnOff(false);
-    // setGrid(newGrid);
     return ;
 }
 

@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState} from 'react';
 import './App.scss';
 import Navbar from './Components/Navbar';
 import SecondNavbar from './Components/SecondNavbar';
@@ -7,6 +7,8 @@ import GridLayout from './Components/Gridlayout';
 import BFS from './Algorithms/BFS';
 import DFS from './Algorithms/DFS';
 import A_start from './Algorithms/A_star';
+import Dijkstra from './Algorithms/Dijkstra';
+import BestFirstSearch from './Algorithms/BestFirstSearch';
 
 function App() {
     const [start,setStart]=useState([9,15]);
@@ -61,19 +63,20 @@ function App() {
 
     const clearPath=()=>{
         let temp=[...grid];
-        for(let i=0;i<20;i++){
-            for(let j=0;j<60;j++)
-                if(temp[i][j]===2||temp[i][j]===3||temp[i][j]===5||temp[i][j]===6) temp[i][j]=0;
-        }   
+        for(let i=0;i<20;i++)
+            for(let j=0;j<60;j++){
+                if(temp[i][j]===5||temp[i][j]===6) temp[i][j]=4;
+                else if(temp[i][j]===2||temp[i][j]===3) temp[i][j]=0;
+            }
         setTurnOff(false);
         setGrid(temp);
     }
 
-    const clearWalls=()=>{
+    const clearGrid=()=>{
         let newGrid=[...grid];
         for(let i=0;i<20;i++){
             for(let j=0;j<60;j++)
-                if(newGrid[i][j]===1) newGrid[i][j]=0;
+                if(newGrid[i][j]===1||newGrid[i][j]===4) newGrid[i][j]=0;
         }
         setGrid(newGrid);
     }
@@ -99,12 +102,12 @@ function App() {
                 return ;
             }
             const node=visitedNodesInOrder[i];
-            if((node[0]!=end[0]||node[1]!=end[1])&&(node[0]!=start[0]||node[1]!=start[1])){
+            if((node[0]!==end[0]||node[1]!==end[1])&&(node[0]!==start[0]||node[1]!==start[1])){
                 if(grid[node[0]][node[1]]===4){
                     setTimeout(()=>{
                         grid[node[0]][node[1]]=5;
                         document.getElementById(`node-${node[0]}-${node[1]}`).className=`grid-cells__weights__visited`; 
-                    })
+                    },15*i);
                 }
                 else{
                     setTimeout(()=>{
@@ -125,6 +128,10 @@ function App() {
             DFS(start,end,grid,visitedNodesInOrder,parent);
         else if(algorithmType==="A*")
             A_start(start,end,grid,visitedNodesInOrder,parent);
+        else if(algorithmType==="DIJKSTRA")
+            Dijkstra(start,end,grid,visitedNodesInOrder,parent);
+        else if(algorithmType==="GREEDY")
+            BestFirstSearch(start,end,grid,visitedNodesInOrder,parent);
         showVisited(visitedNodesInOrder,parent);
     }
 
@@ -134,7 +141,7 @@ function App() {
               setVisualize={setVisualize} 
               turnOff={turnOff}
               setAlgorithmType={setAlgorithmType}
-              clearWalls={clearWalls}
+              clearGrid={clearGrid}
               setTurnOff={setTurnOff}
               clearPath={clearPath}
               visualize={visualize}
@@ -149,7 +156,7 @@ function App() {
           />
         <SecondNavbar/>
         <DescriptionBar algorithmType={algorithmType}/>
-        <GridLayout start={start} end={end} grid={grid} toggleWall={toggleWall}/>
+        <GridLayout start={start} end={end} grid={grid} toggleWall={toggleWall} turnOff={turnOff}/>
         </React.Fragment>
     );
 }

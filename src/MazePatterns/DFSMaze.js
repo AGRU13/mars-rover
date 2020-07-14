@@ -10,16 +10,10 @@ const DFSMaze=(start,end,grid,list)=>{
     stack.push(start);
     let dir=[1,2,3,4];
     let newGrid=[...grid];
-    // for(let i=0;i<20;i++)
-    //     for(let j=0;j<60;j++) newGrid[i][j]=grid[i][j];
-        // console.log(newGrid);
     while(stack.length){
         shuffleArray(dir);
         if(stack.length>2000) break;
         let current=stack.pop();
-        // if((current[0]!==start[0]||current[1]!==start[1])&&(current[0]!==end[0]||current[1]!==end[1])){
-        //     newGrid[current[0]][current[1]]=0;
-        // }
         for(let i=0;i<=3;i++){
             switch(dir[i]){
                 case 1:
@@ -27,8 +21,6 @@ const DFSMaze=(start,end,grid,list)=>{
                     if(grid[current[0]-2][current[1]]!==0){
                         list.push([[current[0]-2],current[1]]);
                         list.push([[current[0]-1],current[1]]);
-                        // document.getElementById(`node-${node[0]}-${node[1]}`).className=`grid-cells`;
-                        // document.getElementById(`node-${node[0]}-${node[1]}`).className=`grid-cells`;
                         stack.push([current[0]-2,current[1]]);
                         newGrid[current[0]-2][current[1]]=0;
                         newGrid[current[0]-1][current[1]]=0;
@@ -87,7 +79,6 @@ const DFSMaze=(start,end,grid,list)=>{
             }
         }
     }
-    // console.log(newGrid);
 }
 
 export default DFSMaze;
