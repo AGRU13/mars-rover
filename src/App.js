@@ -1,14 +1,18 @@
 import React, {useState} from 'react';
 import './App.scss';
+import Modal from 'react-modal';
 import Navbar from './Components/Navbar';
 import SecondNavbar from './Components/SecondNavbar';
 import DescriptionBar from './Components/Descriptionbar';
 import GridLayout from './Components/Gridlayout';
+import ErrorModal from './Components/ErrorModal.js';
 import BFS from './Algorithms/BFS';
 import DFS from './Algorithms/DFS';
 import A_start from './Algorithms/A_star';
 import Dijkstra from './Algorithms/Dijkstra';
 import BestFirstSearch from './Algorithms/BestFirstSearch';
+
+Modal.setAppElement('#root');
 
 function App() {
     const [start,setStart]=useState([9,15]);
@@ -19,6 +23,7 @@ function App() {
     const [algorithmType,setAlgorithmType]=useState("A*");
     const [mazeType,setMazeType]=useState("none");
     const [wallsOrWeights,setWallsOrWeights]=useState("wall");
+    const [showErrorModal,setShowErrorModal]=useState(false);
 
     const toggleWall=(y,x,type)=>{
         if(type===1){
@@ -102,7 +107,7 @@ function App() {
                 return ;
             }
             const node=visitedNodesInOrder[i];
-            if((node[0]!==end[0]||node[1]!==end[1])&&(node[0]!==start[0]||node[1]!==start[1])){
+          if((node[0]!==end[0]||node[1]!==end[1])&&(node[0]!==start[0]||node[1]!==start[1])){
                 if(grid[node[0]][node[1]]===4){
                     setTimeout(()=>{
                         grid[node[0]][node[1]]=5;
@@ -110,7 +115,7 @@ function App() {
                     },15*i);
                 }
                 else{
-                    setTimeout(()=>{
+                    setTimeout(()=>{ 
                         grid[node[0]][node[1]]=3;
                         document.getElementById(`node-${node[0]}-${node[1]}`).className=`grid-cells__visited`;    
                     },15*i);
@@ -121,7 +126,7 @@ function App() {
 
     if(visualize){
         let visitedNodesInOrder=[];
-        let parent=Array(20).fill().map(()=>Array(60).fill([0,0]));
+        let parent=Array(20).fill().map(()=>Array(60).fill([-1,-1]));
         if(algorithmType==="BFS")
             BFS(start,end,grid,visitedNodesInOrder,parent);
         else if(algorithmType==="DFS")
@@ -132,31 +137,38 @@ function App() {
             Dijkstra(start,end,grid,visitedNodesInOrder,parent);
         else if(algorithmType==="GREEDY")
             BestFirstSearch(start,end,grid,visitedNodesInOrder,parent);
-        showVisited(visitedNodesInOrder,parent);
+
+        if(parent[end[0]][end[1]][0]===-1) {
+            setTurnOff(false);
+            setVisualize(false);
+            setShowErrorModal(true);
+        }
+        else showVisited(visitedNodesInOrder,parent);
     }
 
     return (
         <React.Fragment>
-          <Navbar 
-              setVisualize={setVisualize} 
-              turnOff={turnOff}
-              setAlgorithmType={setAlgorithmType}
-              clearGrid={clearGrid}
-              setTurnOff={setTurnOff}
-              clearPath={clearPath}
-              visualize={visualize}
-              grid={grid}
-              setGrid={setGrid}
-              start={start}
-              end={end}
-              mazeType={mazeType}
-              setMazeType={setMazeType}
-              fillWalls={fillWalls}
-              setWallsOrWeights={setWallsOrWeights}
-          />
-        <SecondNavbar/>
-        <DescriptionBar algorithmType={algorithmType}/>
-        <GridLayout start={start} end={end} grid={grid} toggleWall={toggleWall} turnOff={turnOff}/>
+            <ErrorModal showErrorModal={showErrorModal} setShowErrorModal={setShowErrorModal} />
+            <Navbar 
+                setVisualize={setVisualize} 
+                turnOff={turnOff}
+                setAlgorithmType={setAlgorithmType}
+                clearGrid={clearGrid}
+                setTurnOff={setTurnOff}
+                clearPath={clearPath}
+                visualize={visualize}
+                grid={grid}
+                setGrid={setGrid}
+                start={start}
+                end={end}
+                mazeType={mazeType}
+                setMazeType={setMazeType}
+                fillWalls={fillWalls}
+                setWallsOrWeights={setWallsOrWeights}
+            />
+            <SecondNavbar/>
+            <DescriptionBar algorithmType={algorithmType}/>
+            <GridLayout start={start} end={end} grid={grid} toggleWall={toggleWall} turnOff={turnOff}/>
         </React.Fragment>
     );
 }

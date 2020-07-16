@@ -93,7 +93,6 @@ const navbar=
             </select>
             <select
                 className="content-header__select"
-                // onChange={onPatternChange}
                 disabled={turnOff}
                 style={{width:"200px"}}
             >

@@ -1,0 +1,18 @@
+@import './../Style/_mixins';
+@import './../Style/_placeholders';
+
+.modal-error{
+    @include modal(#ff1744);
+
+    &__title{
+        @include modal-title(#ff1744)
+    }
+
+    &__content{
+        @extend %modal-content;
+    }
+
+    &__close{
+        @include modal-close(#ff1744);
+    }
+}

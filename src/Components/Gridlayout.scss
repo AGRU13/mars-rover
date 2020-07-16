@@ -1,3 +1,4 @@
+@import './../Style/_placeholders';
 
 .grid-rows{
     display: flex;
@@ -7,25 +8,12 @@
 }
 
 .grid-cells{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 25px;
-    width: 25px;
-    margin: 0;
-    padding: 0;
+    @extend %cells;
     background: #ffffff;
     border: 1px solid #97ceee;
-    user-select: none;
     // box-shadow: 0 .1rem .1rem  #97ceee;
     &__visited{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 25px;
-        width: 25px;
-        margin: 0;
-        padding: 0;
+        @extend %cells;
         background: #40c4ff;
         border: 1px solid #97ceee;
         animation-name: visitedAnimation;
@@ -36,16 +24,9 @@
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
         animation-play-state: running;
-        user-select: none;
     }
     &__path{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 25px;
-        width: 25px;
-        margin: 0;
-        padding: 0;
+        @extend %cells;
         background: #f30f2d;
         border: 1px solid #97ceee;
         animation-name: shortestPath;
@@ -56,45 +37,24 @@
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
         animation-play-state: running;
-        user-select: none;
     }
     &__walls{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 25px;
-        width: 25px;
-        margin: 0;
-        padding: 0;
+        @extend %cells;
         background: #3a3939;
         border: 1px solid #97ceee;
         -webkit-animation: animation 1500ms linear both;
         animation: animation 1500ms linear both;
-        user-select: none;
     }
     &__weights{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 25px;
-        width: 25px;
-        margin: 0;
-        padding: 0;
+        @extend %cells;
         background: #ffffff;
         font-size: 30px;
         font-weight: bold;
         border: 1px solid #97ceee;
         -webkit-animation: animation 1500ms linear both;
         animation: animation 1500ms linear both;
-        user-select: none;
         &__visited{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 25px;
-            width: 25px;
-            margin: 0;
-            padding: 0;
+            @extend %cells;
             background: #40c4ff;
             border: 1px solid #97ceee;
             font-size: 30px;
@@ -107,16 +67,9 @@
             animation-iteration-count: 1;
             animation-fill-mode: forwards;
             animation-play-state: running;
-            user-select: none;
         }
         &__path{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 25px;
-            width: 25px;
-            margin: 0;
-            padding: 0;
+            @extend %cells;
             background: #f30f2d;
             border: 1px solid #97ceee;
             font-size: 30px;
@@ -129,71 +82,42 @@
             animation-iteration-count: 1;
             animation-fill-mode: forwards;
             animation-play-state: running;
-            user-select: none;
         }
     }
     &__start{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 25px;
-        width: 25px;
-        margin: 0;
-        padding: 0;
+        @extend %cells;
         background: #ffffff;
         border: 1px solid #97ceee;
         background-image: url(./../assets/StartIcon.svg);
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
-        user-select: none;
         &__path{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 25px;
-            width: 25px;
-            margin: 0;
-            padding: 0;
+            @extend %cells;
             background: #f30f2d;
             border: 1px solid #97ceee;
             background-image: url(./../assets/StartIcon.svg);
             background-position: center;
             background-repeat: no-repeat;
             background-size: contain;
-            user-select: none;
         }
     }
     &__end{ 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 25px;
-        width: 25px;
-        margin: 0;
-        padding: 0;
+        @extend %cells;
         background: #ffffff;
         border: 1px solid #97ceee;
         background-image: url(./../assets/EndIcon.svg);
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
-        user-select: none;
         &__path{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 25px;
-            width: 25px;
-            margin: 0;
-            padding: 0;
+            @extend %cells;
             background: #f30f2d;
             border: 1px solid #97ceee;
             background-image: url(./../assets/EndIcon.svg);
             background-position: center;
             background-repeat: no-repeat;
             background-size: contain;
-            user-select: none;
         }
     }
 }

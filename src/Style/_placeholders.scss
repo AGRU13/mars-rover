@@ -1,0 +1,19 @@
+%modal-content {
+    font-size: 20px;
+}
+  
+%disabled {
+    background-color: #b0bec5;
+    box-shadow: none;
+}
+
+%cells{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    width: 25px;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
