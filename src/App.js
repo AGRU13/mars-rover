@@ -8,7 +8,7 @@ import GridLayout from './Components/Gridlayout';
 import ErrorModal from './Components/ErrorModal.js';
 import BFS from './Algorithms/BFS';
 import DFS from './Algorithms/DFS';
-import A_start from './Algorithms/A_star';
+import A_star from './Algorithms/A_star';
 import Dijkstra from './Algorithms/Dijkstra';
 import BestFirstSearch from './Algorithms/BestFirstSearch';
 
@@ -25,16 +25,16 @@ function App() {
     const [wallsOrWeights,setWallsOrWeights]=useState("wall");
     const [showErrorModal,setShowErrorModal]=useState(false);
 
-    const toggleWall=(y,x,type)=>{
+    const toggleWall=(x,y,type)=>{
         if(type===1){
             let temp=[...grid];
             if(wallsOrWeights==="wall")
-                temp[y][x]=1;
-            else temp[y][x]=4;
+                temp[x][y]=1;
+            else temp[x][y]=4;
             setGrid(temp);
         }else{
             let temp=[...grid];
-            temp[y][x]=0;
+            temp[x][y]=0;
             setGrid(temp);
         }
     }
@@ -107,7 +107,7 @@ function App() {
                 return ;
             }
             const node=visitedNodesInOrder[i];
-          if((node[0]!==end[0]||node[1]!==end[1])&&(node[0]!==start[0]||node[1]!==start[1])){
+            if((node[0]!==end[0]||node[1]!==end[1])&&(node[0]!==start[0]||node[1]!==start[1])){  
                 if(grid[node[0]][node[1]]===4){
                     setTimeout(()=>{
                         grid[node[0]][node[1]]=5;
@@ -132,7 +132,7 @@ function App() {
         else if(algorithmType==="DFS")
             DFS(start,end,grid,visitedNodesInOrder,parent);
         else if(algorithmType==="A*")
-            A_start(start,end,grid,visitedNodesInOrder,parent);
+            A_star(start,end,grid,visitedNodesInOrder,parent);
         else if(algorithmType==="DIJKSTRA")
             Dijkstra(start,end,grid,visitedNodesInOrder,parent);
         else if(algorithmType==="GREEDY")
@@ -168,7 +168,15 @@ function App() {
             />
             <SecondNavbar/>
             <DescriptionBar algorithmType={algorithmType}/>
-            <GridLayout start={start} end={end} grid={grid} toggleWall={toggleWall} turnOff={turnOff}/>
+            <GridLayout 
+                start={start} 
+                end={end} 
+                grid={grid} 
+                toggleWall={toggleWall} 
+                turnOff={turnOff}
+                setStart={setStart}
+                setEnd={setEnd}
+            />
         </React.Fragment>
     );
 }

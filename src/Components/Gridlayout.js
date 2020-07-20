@@ -1,7 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Gridlayout.scss';
 
-const GridLayout=({start,end,grid,toggleWall,turnOff})=>{
+const GridLayout=({start,end,grid,toggleWall,turnOff,setStart,setEnd})=>{
+
+    const [clicking,setClicking]=useState(false);
+    const [dragging,setDragging]=useState({begin:false,end:false});
+
+    const onMouseDown=(e)=>{
+        const splitId=e.target.id.split("-");
+        const ridx=Number(splitId[1]);
+        const cidx=Number(splitId[2]);
+        if(ridx===start[0]&&cidx===start[1]){
+            setDragging({begin:true,end:false});
+        }else if(ridx===end[0]&&cidx===end[1]){
+            setDragging({begin:false,end:true});
+        }else{
+            setClicking(true);
+        }
+    }
+
+    const onMouseUp=()=>{
+        setClicking(false);
+        setDragging({begin:false,end:false});
+    }
+
+    const onMouseMove=(e)=>{
+        if(turnOff) return;
+        const splitId=e.target.id.split("-");
+        const ridx=Number(splitId[1]);
+        const cidx=Number(splitId[2]);
+        if(dragging.begin||dragging.end){
+            if(e.target.className!=="grid-cells") return;
+            const next=[ridx,cidx];
+            if(dragging.begin) setStart(next);
+            else setEnd(next);
+        }else{
+            if(!clicking) return;
+            if(e.target.className==="grid-cells__walls"||e.target.className=="grid-cells__weights") toggleWall(ridx,cidx,0)
+            else if(e.target.className==="grid-cells") toggleWall(ridx,cidx,1) 
+        }
+    }
+
+    const onClick=(e)=>{
+        if(turnOff) return;
+        const splitId=e.target.id.split("-");
+        const ridx=Number(splitId[1]);
+        const cidx=Number(splitId[2]);
+        if(e.target.className==="grid-cells__walls"||e.target.className=="grid-cells__weights") toggleWall(ridx,cidx,0)
+        else if(e.target.className==="grid-cells") toggleWall(ridx,cidx,1) 
+    }
+
     let List=[];
     for(let i=0;i<20;i++){
         let temp=[];
@@ -37,14 +85,6 @@ const GridLayout=({start,end,grid,toggleWall,turnOff})=>{
             }else if(grid[i][j]===0){
                 temp.push(
                     <div className="grid-cells"
-                        onMouseEnter={(e)=>{
-                            if(!turnOff&&window.event.buttons===1)
-                                toggleWall(i,j,1);}
-                        }
-                        onClick={(e)=>{
-                            if(!turnOff)
-                                toggleWall(i,j,1);}
-                        }
                         key={`${i}${j}`}
                         id={`node-${i}-${j}`}>
                     </div>
@@ -52,14 +92,6 @@ const GridLayout=({start,end,grid,toggleWall,turnOff})=>{
             }else if(grid[i][j]===1) {
                 temp.push(
                     <div className="grid-cells__walls" 
-                    onMouseEnter={(e)=>{
-                        if(!turnOff&&window.event.buttons===1)
-                            toggleWall(i,j,0);}
-                    }
-                    onClick={(e)=>{
-                        if(!turnOff)
-                            toggleWall(i,j,0)}
-                    }
                     key={`${i}${j}`}
                     id={`node-${i}-${j}`}>
                     </div>
@@ -77,14 +109,6 @@ const GridLayout=({start,end,grid,toggleWall,turnOff})=>{
             }else if(grid[i][j]===4){
                 temp.push(
                     <div className="grid-cells__weights" 
-                    onMouseEnter={(e)=>{
-                        if(!turnOff&&window.event.buttons===1)
-                            toggleWall(i,j,0);}
-                    }
-                    onClick={(e)=>{
-                        if(!turnOff)
-                            toggleWall(i,j,0)}
-                    }
                     key={`${i}${j}`}
                     id={`node-${i}-${j}`}>
                         w
@@ -106,7 +130,14 @@ const GridLayout=({start,end,grid,toggleWall,turnOff})=>{
     }
 
     return (
-        <div style={{marginTop: "10px"}}>
+        <div style={{marginTop: "10px"}}
+            onMouseDown={onMouseDown}
+            onMouseUp={onMouseUp}
+            onMouseMove={onMouseMove}
+            tabIndex="0"
+            role="button"
+            onClick={onClick}
+        >
             {List.map( (obj,idx)=>{
                     return (
                         <div className="grid-rows" key={idx}>

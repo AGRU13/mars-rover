@@ -11,7 +11,7 @@
     @extend %cells;
     background: #ffffff;
     border: 1px solid #97ceee;
-    // box-shadow: 0 .1rem .1rem  #97ceee;
+    box-shadow: 0 .1rem .1rem  #97ceee;
     &__visited{
         @extend %cells;
         background: #40c4ff;
