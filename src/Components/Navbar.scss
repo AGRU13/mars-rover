@@ -5,25 +5,21 @@
   }
 
 .content-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    height: 60px;
-    // margin-bottom: 20px;
     padding: 12px 0;
     box-sizing: border-box;
     font-size: 20px;
     color: #000000;
     background:  #aed6f1;
     :first-child{
-        margin-left: 0;
+        margin-left: 40px;
     }
     :last-child{
         margin-right: 0;
     }
     &__select {
-      height: 100%;
-      margin: 0 55px;
+      display: inline-flex;
+      height: 35px;
+      margin: 0 40px;
       border-radius: 5px;
       font-weight: bold;
       font-family: inherit;
@@ -51,7 +47,8 @@
   
     &__button {
       $button: &;
-      display: flex;
+      display: inline-flex;
+      height: 35px;
       align-items: center;
       font-family: inherit;
       font-weight: bold;
@@ -63,7 +60,7 @@
       border: none;
       border-radius: 5px;
       padding: 0 15px;
-      margin:0 65px;
+      margin:0 40px;
       box-shadow: 0 3px 3px 0 #58d68d;
       color: inherit;
       transition: transform 0.2s linear;

@@ -1,15 +1,23 @@
 .description{
     margin:0;
     width:100%;
-    height:50px;
     color: black;
     background-color: #f3e5f5;
-    font-size: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    white-space: nowrap;
+    padding: 10px 0px;
     font-size: 20px;
     font-style: italic;
     text-align: center;
+    box-sizing: border-box;
+}
+
+.performance{
+    margin: 0;
+    width: 100%;
+    color: black;
+    background-color: white;
+    font-size: 15px;
+    padding: 5px 0px;
+    font-weight: bold;
+    text-align: center;
+    box-sizing: border-box;
 }

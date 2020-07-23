@@ -22,6 +22,7 @@ const A_star=(start,end,grid,visitedNodesInOrder,parent)=>{
 
     // inserting the source cell
     pq.queue([heuristic[start[0]][start[1]],...start]);
+    visitedNodesInOrder.push([...start]);
     dist[start[0]][start[1]]=0;
     while(pq.length){
 
@@ -50,7 +51,7 @@ const A_star=(start,end,grid,visitedNodesInOrder,parent)=>{
                     if(g<dist[x][y]){     //checking if we have found a shorter path of this node
 
                         //storing the cells in the order they are visited so that they can be used for visualization later 
-                        visitedNodesInOrder.push([current[1],current[2]]);
+                        visitedNodesInOrder.push([x,y]);
 
                         // storing the parent of the current for finding the final path
                         parent[x][y]=[current[1],current[2]]; 

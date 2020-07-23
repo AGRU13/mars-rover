@@ -6,6 +6,7 @@ import SecondNavbar from './Components/SecondNavbar';
 import DescriptionBar from './Components/Descriptionbar';
 import GridLayout from './Components/Gridlayout';
 import ErrorModal from './Components/ErrorModal.js';
+import TutorialModal from './Components/TutorialModal';
 import BFS from './Algorithms/BFS';
 import DFS from './Algorithms/DFS';
 import A_star from './Algorithms/A_star';
@@ -24,6 +25,10 @@ function App() {
     const [mazeType,setMazeType]=useState("none");
     const [wallsOrWeights,setWallsOrWeights]=useState("wall");
     const [showErrorModal,setShowErrorModal]=useState(false);
+    const [showTutorialModal,setShowTutorialModel]=useState(false);
+    const [exploredNodes,setExploredNodes]=useState(0);
+    const [timeTaken,setTimeTaken]=useState(0);
+    const [pathLength,setPathlength]=useState(0);
 
     const toggleWall=(x,y,type)=>{
         if(type===1){
@@ -41,29 +46,29 @@ function App() {
 
     const showPath=async(parent)=>{
         let previous=end;
-        let newGrid=[...grid];
-        newGrid[previous[0]][previous[1]]=2;
+        grid[previous[0]][previous[1]]=2;
         let list=[];
         list.push(previous);
+        let distance=1;
         while(previous[0]!==start[0]||previous[1]!==start[1]){
             previous=parent[previous[0]][previous[1]];
             list.unshift(previous);
-            if(newGrid[previous[0]][previous[1]]===5) newGrid[previous[0]][previous[1]]=6;
-            else newGrid[previous[0]][previous[1]]=2;
+            if(grid[previous[0]][previous[1]]===5) grid[previous[0]][previous[1]]=6,distance+=10;
+            else grid[previous[0]][previous[1]]=2 ,distance+=1;
         }
         for(let i=0;i<list.length;i++){
             await new Promise((done) => setTimeout(() => done(), 50)); //To slow down the animation
             if(i===0){
-                document.getElementById(`node-${list[i][0]}-${list[i][1]}`).className=`grid-cells__start__path`;
+                document.getElementById(`node-${list[i][0]}-${list[i][1]}`).className="grid-cells__start__path";
             }else if(i===list.length-1){
-                document.getElementById(`node-${list[i][0]}-${list[i][1]}`).className=`grid-cells__end__path`;
+                document.getElementById(`node-${list[i][0]}-${list[i][1]}`).className="grid-cells__end__path";
             }else{
-                if(newGrid[list[i][0]][list[i][1]]===6) document.getElementById(`node-${list[i][0]}-${list[i][1]}`).className=`grid-cells__weights__path`;
-                else document.getElementById(`node-${list[i][0]}-${list[i][1]}`).className=`grid-cells__path`;
+                if(grid[list[i][0]][list[i][1]]===6) document.getElementById(`node-${list[i][0]}-${list[i][1]}`).className="grid-cells__weights__path";
+                else document.getElementById(`node-${list[i][0]}-${list[i][1]}`).className="grid-cells__path";
             }
         }
+        setPathlength(distance);
         setVisualize(false);
-        setGrid(newGrid);
     }
 
     const clearPath=()=>{
@@ -124,20 +129,38 @@ function App() {
         }
     }
 
-    if(visualize){
+    const visualizeAlgorithm=()=>{
         let visitedNodesInOrder=[];
         let parent=Array(20).fill().map(()=>Array(60).fill([-1,-1]));
-        if(algorithmType==="BFS")
+        let t0=null,t1=null;
+        if(algorithmType==="BFS"){
+            t0=performance.now();
             BFS(start,end,grid,visitedNodesInOrder,parent);
-        else if(algorithmType==="DFS")
+            t1=performance.now();
+        }
+        else if(algorithmType==="DFS"){
+            t0=performance.now();
             DFS(start,end,grid,visitedNodesInOrder,parent);
-        else if(algorithmType==="A*")
+            t1=performance.now();
+        }
+        else if(algorithmType==="A*"){
+            t0=performance.now();
             A_star(start,end,grid,visitedNodesInOrder,parent);
-        else if(algorithmType==="DIJKSTRA")
+            t1=performance.now();
+        }
+        else if(algorithmType==="DIJKSTRA"){
+            t0=performance.now();
             Dijkstra(start,end,grid,visitedNodesInOrder,parent);
-        else if(algorithmType==="GREEDY")
+            t1=performance.now();
+        }
+        else if(algorithmType==="GREEDY"){
+            t0=performance.now();
             BestFirstSearch(start,end,grid,visitedNodesInOrder,parent);
-
+            t1=performance.now();
+        }
+        setExploredNodes(visitedNodesInOrder.length);
+        setTimeTaken(t1-t0);
+        // console.log(visitedNodesInOrder);
         if(parent[end[0]][end[1]][0]===-1) {
             setTurnOff(false);
             setVisualize(false);
@@ -149,25 +172,34 @@ function App() {
     return (
         <React.Fragment>
             <ErrorModal showErrorModal={showErrorModal} setShowErrorModal={setShowErrorModal} />
+            <TutorialModal showTutorialModal={showTutorialModal} setShowTutorialModel={setShowTutorialModel}/>
             <Navbar 
                 setVisualize={setVisualize} 
                 turnOff={turnOff}
                 setAlgorithmType={setAlgorithmType}
+                visualizeAlgorithm={visualizeAlgorithm}
                 clearGrid={clearGrid}
                 setTurnOff={setTurnOff}
                 clearPath={clearPath}
                 visualize={visualize}
                 grid={grid}
-                setGrid={setGrid}
                 start={start}
                 end={end}
                 mazeType={mazeType}
                 setMazeType={setMazeType}
                 fillWalls={fillWalls}
                 setWallsOrWeights={setWallsOrWeights}
+                setShowTutorialModel={setShowTutorialModel}
             />
             <SecondNavbar/>
-            <DescriptionBar algorithmType={algorithmType}/>
+            <DescriptionBar 
+                algorithmType={algorithmType}
+                turnOff={turnOff} 
+                visualize={visualize}
+                exploredNodes={exploredNodes}
+                timeTaken={timeTaken}
+                pathLength={pathLength}
+            />
             <GridLayout 
                 start={start} 
                 end={end} 

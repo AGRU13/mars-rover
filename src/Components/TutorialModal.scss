@@ -1,0 +1,45 @@
+@import './../Style/_mixins';
+@import './../Style/_placeholders';
+
+.tutorial-modal{
+    @include modal(#1565c0);
+    width: 700px;
+    height: 400px;
+    padding: 20px;
+    align-items: center;
+    &__title{
+        @include modal-title(#1565c0);
+    }
+
+    &__color{
+        margin-bottom: 20px;
+    }
+
+    &__usage{
+        &__row{
+            margin:0px;
+        }
+        h2{
+            margin:10px 0px 0px 0px;
+            font-size: 20px;
+        }
+    }
+
+    &__row{
+        display: flex;
+        align-items: center;
+    }
+
+    &__content{
+        @extend %modal-content;
+        width: 150px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    &__close {
+        @include modal-close(#1565c0);
+    }
+}

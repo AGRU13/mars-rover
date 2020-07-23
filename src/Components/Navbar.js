@@ -7,9 +7,9 @@ import KruskalMaze from './../MazePatterns/KruskalMaze';
 import RecursiveDivision from './../MazePatterns/RecursiveDivision';
 
 const navbar=
-({setVisualize,turnOff,setAlgorithmType,clearGrid,
-    setTurnOff,clearPath,visualize,grid,setGrid,start,
-    end,mazeType,setMazeType,fillWalls,setWallsOrWeights})=>{
+({setVisualize,turnOff,setAlgorithmType,visualizeAlgorithm,clearGrid,
+    setTurnOff,clearPath,visualize,grid,start,
+    end,mazeType,setMazeType,fillWalls,setWallsOrWeights,setShowTutorialModel})=>{
 
     const onAlgoChange=(e)=>{
         setAlgorithmType(e.target.value);
@@ -18,6 +18,7 @@ const navbar=
     const onVisualize=()=>{
         setVisualize(true);
         setTurnOff(true);
+        visualizeAlgorithm();
     }
 
     const showMaze=async(visitedNodesInOrder)=>{
@@ -135,6 +136,14 @@ const navbar=
                 type="button"
             >
                 Clear Path
+            </button>
+            <button
+                className="content-header__button"
+                onClick={()=>setShowTutorialModel(true)}
+                disabled={turnOff}
+                type="button"
+            >
+                How to use?
             </button>
         </nav>
     );
