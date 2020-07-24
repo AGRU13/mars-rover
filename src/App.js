@@ -53,8 +53,14 @@ function App() {
         while(previous[0]!==start[0]||previous[1]!==start[1]){
             previous=parent[previous[0]][previous[1]];
             list.unshift(previous);
-            if(grid[previous[0]][previous[1]]===5) grid[previous[0]][previous[1]]=6,distance+=10;
-            else grid[previous[0]][previous[1]]=2 ,distance+=1;
+            if(grid[previous[0]][previous[1]]===5) {
+                grid[previous[0]][previous[1]]=6;
+                distance+=10;
+            }
+            else {
+                grid[previous[0]][previous[1]]=2;
+                distance+=1;
+            }
         }
         for(let i=0;i<list.length;i++){
             await new Promise((done) => setTimeout(() => done(), 50)); //To slow down the animation

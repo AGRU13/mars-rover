@@ -12,10 +12,12 @@ const navbar=
     end,mazeType,setMazeType,fillWalls,setWallsOrWeights,setShowTutorialModel})=>{
 
     const onAlgoChange=(e)=>{
+        // storing the selsected algorithm
         setAlgorithmType(e.target.value);
     }
 
     const onVisualize=()=>{
+        //Upon Clicking the visualize button
         setVisualize(true);
         setTurnOff(true);
         visualizeAlgorithm();
@@ -38,6 +40,7 @@ const navbar=
     }
 
     const onPatternChange=async(e)=>{
+        // upon selecting a maze
         if(e.target.value==="none") return;
         setTurnOff(true);
         setMazeType(e.target.value);
@@ -97,7 +100,7 @@ const navbar=
                 disabled={turnOff}
                 style={{width:"200px"}}
             >
-                <option value="none" defaultChecked>None</option>
+                <option value="none" defaultChecked>Select a Maze</option>
                 <option value="stair" onClick={onPatternChange}>Simple Stair Pattern</option>
                 <option value="dfs_maze" onClick={onPatternChange}>DFS Maze</option>
                 <option value="binary_maze" onClick={onPatternChange}>Binary Tree Maze</option>

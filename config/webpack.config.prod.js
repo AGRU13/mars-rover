@@ -164,7 +164,24 @@ module.exports = {
           // a single CSS file in production instead of JS code injecting <style>
           // tags. If you use code splitting, however, any async bundles will still
           // use the "style" loader inside the async code so CSS from them won't be
+          
           // in the main CSS file.
+          {
+            test: /\.scss$/,
+            include: paths.appSrc,
+            use: [
+              require.resolve('style-loader'),
+              {
+                loader: require.resolve('css-loader'),
+                options: {
+                  importLoaders: 1,
+                },
+              },
+              {
+                loader: require.resolve('sass-loader')
+              }
+            ]
+          },
           {
             test: /\.css$/,
             loader: ExtractTextPlugin.extract(
@@ -183,8 +200,6 @@ module.exports = {
                         importLoaders: 1,
                         minimize: true,
                         sourceMap: shouldUseSourceMap,
-                        modules: true,
-                        localIdentName: '[name]__[local]__[hash:base64:5]'
                       },
                     },
                     {
