@@ -1,6 +1,24 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900');
 
 body,html{
+   margin:0px;
    height: 100%;
 }
+
+.footer {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 20px;
+   font-size: 20px;
+   margin-top: 20px;
+   font-family: cursive;
+   &__author {
+     margin-right: 20px;
+   }
+ 
+   &__github {
+     color: black;
+   }
+ }
 

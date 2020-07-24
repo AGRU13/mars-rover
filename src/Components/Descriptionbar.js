@@ -21,9 +21,9 @@ const DescriptionBar=({algorithmType,turnOff,visualize,exploredNodes,timeTaken,p
             {description}
         </div>
         <pre className="performance">
-            {!visualize&&turnOff&&mazeType=="none"?"No of explored nodes = "+`${exploredNodes},`:null}
-            {!visualize&&turnOff&&mazeType=="none"?"   Time Taken = "+`${timeTaken} milliseconds,`:null}
-            {!visualize&&turnOff&&mazeType=="none"?"   Shortest Path Length/Cost = "+`${pathLength}`:null}
+            {!visualize&&turnOff&&mazeType==="none"?"No of explored nodes = "+`${exploredNodes},`:null}
+            {!visualize&&turnOff&&mazeType==="none"?"   Time Taken = "+`${timeTaken} milliseconds,`:null}
+            {!visualize&&turnOff&&mazeType==="none"?"   Shortest Path Length/Cost = "+`${pathLength}`:null}
         </pre>
         </React.Fragment>
     )

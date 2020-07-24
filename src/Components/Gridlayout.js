@@ -36,7 +36,7 @@ const GridLayout=({start,end,grid,toggleWall,turnOff,setStart,setEnd})=>{
             else setEnd(next);
         }else{
             if(!clicking) return;
-            if(e.target.className==="grid-cells__walls"||e.target.className=="grid-cells__weights") toggleWall(ridx,cidx,0)
+            if(e.target.className==="grid-cells__walls"||e.target.className==="grid-cells__weights") toggleWall(ridx,cidx,0)
             else if(e.target.className==="grid-cells") toggleWall(ridx,cidx,1) 
         }
     }
@@ -46,7 +46,7 @@ const GridLayout=({start,end,grid,toggleWall,turnOff,setStart,setEnd})=>{
         const splitId=e.target.id.split("-");
         const ridx=Number(splitId[1]);  // fet the column number from the element id
         const cidx=Number(splitId[2]);  // fet the column number from the element id
-        if(e.target.className==="grid-cells__walls"||e.target.className=="grid-cells__weights") toggleWall(ridx,cidx,0)
+        if(e.target.className==="grid-cells__walls"||e.target.className==="grid-cells__weights") toggleWall(ridx,cidx,0)
         else if(e.target.className==="grid-cells") toggleWall(ridx,cidx,1) 
     }
 

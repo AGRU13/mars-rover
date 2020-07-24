@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.scss';
-import Modal from 'react-modal';
+import Modal from 'react-modal'; 
+import { FaGithub } from 'react-icons/fa'; //github icon
 import Navbar from './Components/Navbar';
 import SecondNavbar from './Components/SecondNavbar';
 import DescriptionBar from './Components/Descriptionbar';
@@ -216,6 +217,16 @@ function App() {
                 setStart={setStart}
                 setEnd={setEnd}
             />
+            <footer className="footer">
+                <p className="footer__author">PATHFINDING VISUALIZER - Made by Ayush Agrawal</p>
+                <a  
+                    href="https://github.com/AGRU13/mars-rover"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <FaGithub className="footer__github" />
+                </a>
+            </footer>
         </React.Fragment>
     );
 }
