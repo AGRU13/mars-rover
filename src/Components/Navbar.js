@@ -61,13 +61,13 @@ const navbar=
             fillWalls();
             await new Promise((done) => setTimeout(() => done(), 10)); //To slow down the animation
             let visitedNodesInOrder=[];
-            BinaryTreeMaze(start,end,grid,visitedNodesInOrder);
+            BinaryTreeMaze(grid,visitedNodesInOrder);
             showMaze(visitedNodesInOrder);
         }else if(e.target.value==="kruskal_maze"){
             fillWalls();
             await new Promise((done) => setTimeout(() => done(), 10)); //To slow down the animation
             let visitedNodesInOrder=[];
-            KruskalMaze(start,end,grid,visitedNodesInOrder);
+            KruskalMaze(grid,visitedNodesInOrder);
             showMaze(visitedNodesInOrder);
         }else if(e.target.value==="recursive"){
             clearGrid();
