@@ -205,6 +205,7 @@ function App() {
                 exploredNodes={exploredNodes}
                 timeTaken={timeTaken}
                 pathLength={pathLength}
+                mazeType={mazeType}
             />
             <GridLayout 
                 start={start} 

@@ -5,7 +5,6 @@
   }
 
 .content-header {
-    padding: 12px 0;
     box-sizing: border-box;
     font-size: 20px;
     color: #000000;
@@ -19,7 +18,7 @@
     &__select {
       display: inline-flex;
       height: 35px;
-      margin: 0 40px;
+      margin: 12px 40px;
       border-radius: 5px;
       font-weight: bold;
       font-family: inherit;
@@ -60,12 +59,56 @@
       border: none;
       border-radius: 5px;
       padding: 0 15px;
-      margin:0 40px;
+      margin:12px 40px;
       box-shadow: 0 3px 3px 0 #58d68d;
       color: inherit;
       transition: transform 0.2s linear;
       outline: none;
+      &--pause {
+        @extend #{$button};
+        background-color: #a8a2a2;
+      }
   
+      &--usage {
+        @extend #{$button};
+        background-color: #a57171;
+        box-shadow: 0 3px 3px 0 #ce0808 ;
+      }
+  
+      &:last-child {
+        margin-right: 0;
+      }
+  
+      &:hover:enabled {
+        transform: translateY(-10%);
+      }
+  
+      &:disabled {
+        @extend %disabled;
+      }
+    }
+
+    
+    &__tutorial{
+      $button: &;
+      display: inline-flex;
+      height: 35px;
+      align-items: center;
+      font-family: inherit;
+      font-weight: bold;
+      font-size: inherit;
+      cursor: pointer;
+      background-color: #ce93d8;
+      appearance: none;
+      -webkit-appearance: none;
+      border: none;
+      border-radius: 5px;
+      padding: 0 15px;
+      margin:0 40px;
+      box-shadow: 0 3px 3px 0 #ba68c8;
+      color: inherit;
+      transition: transform 0.2s linear;
+      outline: none;
       &--pause {
         @extend #{$button};
         background-color: #a8a2a2;

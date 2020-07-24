@@ -4,6 +4,7 @@ import './TutorialModal.scss';
 
 const tutorialModal=({showTutorialModal,setShowTutorialModel})=>{
     return(
+        // all the props are already provided in the modal component
         <Modal
             className="tutorial-modal"
             isOpen={showTutorialModal}

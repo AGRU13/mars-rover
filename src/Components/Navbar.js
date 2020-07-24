@@ -24,6 +24,7 @@ const navbar=
     }
 
     const showMaze=async(visitedNodesInOrder)=>{
+        // It converts the cells css classes in the order they are visited by the algorithm
         for(let i=0;i<=visitedNodesInOrder.length;i++){
             if(i===visitedNodesInOrder.length){
                 await new Promise((done) => setTimeout(() => done(), 10)); //To slow down the animation
@@ -141,7 +142,7 @@ const navbar=
                 Clear Path
             </button>
             <button
-                className="content-header__button"
+                className="content-header__tutorial"
                 onClick={()=>setShowTutorialModel(true)}
                 disabled={turnOff}
                 type="button"

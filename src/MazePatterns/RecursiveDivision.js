@@ -5,6 +5,7 @@ const recursiveDivisionMaze=async(grid, rowStart, rowEnd, colStart, colEnd, orie
       return;
     }
     if (!surroundingWalls) {
+        // creating the walls which will surroun the grid, this will be done only once
         for(let i=0;i<20;i++){
             for(let j=0;j<60;j++){
                 if(i===0||j===0||i===19||j===59){
@@ -25,8 +26,8 @@ const recursiveDivisionMaze=async(grid, rowStart, rowEnd, colStart, colEnd, orie
         for (let number = colStart - 1; number <= colEnd + 1; number += 2) {
             possibleCols.push(number);
         }
-        let randomRowIndex = Math.floor(Math.random() * possibleRows.length);
-        let randomColIndex = Math.floor(Math.random() * possibleCols.length);
+        let randomRowIndex = Math.floor(Math.random() * possibleRows.length);  // randomly selecting a row to conevert all the cells to walls
+        let randomColIndex = Math.floor(Math.random() * possibleCols.length);   // randomly selecting a column so that one cell can be left normal
         let currentRow = possibleRows[randomRowIndex];
         let colRandom = possibleCols[randomColIndex];
         for(let i=rowStart-1;i<=rowEnd+1;i++){
@@ -59,8 +60,8 @@ const recursiveDivisionMaze=async(grid, rowStart, rowEnd, colStart, colEnd, orie
         for (let number = rowStart - 1; number <= rowEnd + 1; number += 2) {
             possibleRows.push(number);
         }
-        let randomColIndex = Math.floor(Math.random() * possibleCols.length);
-        let randomRowIndex = Math.floor(Math.random() * possibleRows.length);
+        let randomColIndex = Math.floor(Math.random() * possibleCols.length);       // randomly selecting a column to conevert all the cells to walls
+        let randomRowIndex = Math.floor(Math.random() * possibleRows.length);       // randomly selecting a row so that one cell can be left normal
         let currentCol = possibleCols[randomColIndex];
         let rowRandom = possibleRows[randomRowIndex];
         for(let i=rowStart-1;i<=rowEnd+1;i++){
