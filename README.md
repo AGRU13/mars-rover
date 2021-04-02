@@ -1,7 +1,5 @@
 # Pathfinding Visualizer
-Website visualizing different weighted and unweighted pathfinding algorithms.
-
-<br>
+Website visualizing different weighted and unweighted pathfinding algorithms, as well as some maze generating algortihms.
 
 ### Pathfinding Algorithms present
 * A-star
@@ -10,15 +8,20 @@ Website visualizing different weighted and unweighted pathfinding algorithms.
 * Dijkstra
 * Greedy Best-First Search
 
-<br>
+Some of them works only on weighted graphs while others works on both weighted and unweighted.
 
-Some of them works only on weighted graphs while others works on weighted and unweighted as well.
+### Maze Generating Algorithms present
+* Stair Pattern
+* DFS maze
+* Binary Tree Maze
+* Kruskal Maze
+* Recursive Division
 
 ## Technical Stack
 
 |                  UI Library                   |                   Styling                    |
 | :-------------------------------------------: | :------------------------------------------: | 
-| <img src="./images/react.svg" height="100px"> | <img src="./images/sass.png" height="100px"> | 
+| <img src="./react-logo.png" height="100px"> | <img src="./sass-logo.png" height="100px"> | 
 
 <br>
 
@@ -33,4 +36,4 @@ npm start
 ```
 
 
-## [The web-app is made using create-react-app] (https://github.com/facebook/create-react-app#creating-an-app)
+### [The web-app is made using create-react-app](https://github.com/facebook/create-react-app#creating-an-app)
