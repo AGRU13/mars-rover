@@ -1,6 +1,10 @@
 # Pathfinding Visualizer
 Website visualizing different weighted and unweighted pathfinding algorithms, as well as some maze generating algortihms.
 
+<img src="./images/visualizer-walls.gif">
+
+<img src="./images/visualizer-maze.gif">
+
 ### Pathfinding Algorithms present
 * A-star
 * Depth-First Search
@@ -21,7 +25,7 @@ Some of them works only on weighted graphs while others works on both weighted a
 
 |                  UI Library                   |                   Styling                    |
 | :-------------------------------------------: | :------------------------------------------: | 
-| <img src="./react-logo.png" height="100px"> | <img src="./sass-logo.png" height="100px"> | 
+| <img src="./images/react-logo.png" height="100px"> | <img src="./images/sass-logo.png" height="100px"> | 
 
 <br>
 
