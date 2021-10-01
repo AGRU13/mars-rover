@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900');
 
 body,html{
-   margin:0px;
+   margin:0;
    height: 100%;
 }
 
@@ -9,14 +9,19 @@ body,html{
    display: flex;
    justify-content: center;
    align-items: center;
-   height: 20px;
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   background: #AED6F1AA;
+   margin: 0 auto;
    font-size: 20px;
-   margin-top: 20px;
+   height: 40px;
    font-family: cursive;
    &__author {
      margin-right: 20px;
    }
- 
+
    &__github {
      color: black;
    }
