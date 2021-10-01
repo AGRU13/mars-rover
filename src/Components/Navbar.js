@@ -118,7 +118,7 @@ const navbar=
                 <option value="weight">Weights</option>
             </select>
             <button
-                className="content-header__button"
+                className="content-header__button__main"
                 onClick={onVisualize}
                 disabled={turnOff}
                 type="button"

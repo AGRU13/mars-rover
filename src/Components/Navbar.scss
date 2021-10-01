@@ -29,7 +29,6 @@
     margin: 12px 40px;
     border-radius: 5px;
     font-weight: bold;
-    font-family: inherit;
     font-size: inherit;
     color: inherit;
     outline: none;
@@ -59,7 +58,6 @@
     display: inline-flex;
     height: 35px;
     align-items: center;
-    font-family: inherit;
     font-weight: bold;
     font-size: inherit;
     cursor: pointer;
@@ -73,6 +71,12 @@
     color: inherit;
     transition: transform 0.2s linear;
     outline: none;
+
+    &__main {
+      @extend #{$button};
+      background: #AEF2BC;
+      transform: scale(1.1);
+    }
 
     &--pause {
       @extend #{$button};
@@ -90,7 +94,7 @@
     }
 
     &:hover:enabled {
-      transform: translateY(-10%);
+      filter: brightness(1.1);
     }
 
     &:disabled {
@@ -104,7 +108,6 @@
     display: inline-flex;
     height: 35px;
     align-items: center;
-    font-family: inherit;
     font-weight: bold;
     font-size: inherit;
     cursor: pointer;
