@@ -1,9 +1,15 @@
 
 .bottom-nav{
-    background: #ffecb3;
+    background: #F1C8AC;
     box-sizing: border-box;
+    transition: background 2s;
+
+    &:hover {
+        background: #F8E3D6;
+    }
 
     &__ul{
+        transform: scale(0.9);
         list-style-type: none;
         margin: 0;
         box-sizing: border-box;

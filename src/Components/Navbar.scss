@@ -1,135 +1,145 @@
 
 %disabled {
-    background-color: #a8a2a2;
-    box-shadow: none;
-  }
+  background-color: #a8a2a2;
+  box-shadow: none;
+}
 
 .content-header {
-    box-sizing: border-box;
-    font-size: 20px;
-    color: #000000;
-    background:  #aed6f1;
-    :first-child{
-        margin-left: 40px;
-    }
-    :last-child{
-        margin-right: 0;
-    }
-    &__select {
-      display: inline-flex;
-      height: 35px;
-      margin: 12px 40px;
-      border-radius: 5px;
-      font-weight: bold;
-      font-family: inherit;
-      font-size: inherit;
-      color: inherit;
-      border: none;
-      outline: none;
-      cursor: pointer;
-      -webkit-appearance: none;
-      appearance: none;
-      background:  #82e0aa ;
-      box-shadow: 0 3px 3px 0 #58d68d;
-      background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
-      background-repeat: no-repeat;
-      background-position-x: 100%;
-      background-position-y: 5px;
-      padding-left: 10px;
-        &option{
-            box-shadow: 0 3px 3px 0 #58d68d;
-        }
-      &:disabled {
-        @extend %disabled;
-      }
-    }
-  
-    &__button {
-      $button: &;
-      display: inline-flex;
-      height: 35px;
-      align-items: center;
-      font-family: inherit;
-      font-weight: bold;
-      font-size: inherit;
-      cursor: pointer;
-      background: #82e0aa ;
-      appearance: none;
-      -webkit-appearance: none;
-      border: none;
-      border-radius: 5px;
-      padding: 0 15px;
-      margin:12px 40px;
-      box-shadow: 0 3px 3px 0 #58d68d;
-      color: inherit;
-      transition: transform 0.2s linear;
-      outline: none;
-      &--pause {
-        @extend #{$button};
-        background-color: #a8a2a2;
-      }
-  
-      &--usage {
-        @extend #{$button};
-        background-color: #a57171;
-        box-shadow: 0 3px 3px 0 #ce0808 ;
-      }
-  
-      &:last-child {
-        margin-right: 0;
-      }
-  
-      &:hover:enabled {
-        transform: translateY(-10%);
-      }
-  
-      &:disabled {
-        @extend %disabled;
-      }
+  box-sizing: border-box;
+  font-size: 20px;
+  color: #000000;
+  background: #aed6f1;
+  transition: background 2s;
+
+  &:hover {
+    background: #DBEDF9;
+  }
+
+  :first-child {
+    margin-left: 40px;
+  }
+
+  :last-child {
+    margin-right: 0;
+  }
+
+  &__select {
+    display: inline-flex;
+    height: 35px;
+    margin: 12px 40px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #DEACF2;
+    border: 2px solid #361d3c;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 2px;
+    padding-left: 10px;
+    transition: background-color 0.5s;
+
+    &:disabled {
+      @extend %disabled;
     }
 
-    
-    &__tutorial{
-      $button: &;
-      display: inline-flex;
-      height: 35px;
-      align-items: center;
-      font-family: inherit;
-      font-weight: bold;
-      font-size: inherit;
-      cursor: pointer;
-      background-color: #ce93d8;
-      appearance: none;
-      -webkit-appearance: none;
-      border: none;
-      border-radius: 5px;
-      padding: 0 15px;
-      margin:0 40px;
-      box-shadow: 0 3px 3px 0 #ba68c8;
-      color: inherit;
-      transition: transform 0.2s linear;
-      outline: none;
-      &--pause {
-        @extend #{$button};
-        background-color: #a8a2a2;
-      }
-  
-      &--usage {
-        @extend #{$button};
-        background-color: #a57171;
-        box-shadow: 0 3px 3px 0 #ce0808 ;
-      }
-  
-      &:last-child {
-        margin-right: 0;
-      }
-  
-      &:hover:enabled {
-        transform: translateY(-10%);
-      }
-  
-      &:disabled {
-        @extend %disabled;
-      }
+    &:hover {
+      background: #eecaff;
     }
   }
+
+  &__button {
+    $button: &;
+    display: inline-flex;
+    height: 35px;
+    align-items: center;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: inherit;
+    cursor: pointer;
+    background: #F1ACD5;
+    border: 2px solid #4C0D33;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 5px;
+    padding: 0 15px;
+    margin: 12px 40px;
+    color: inherit;
+    transition: transform 0.2s linear;
+    outline: none;
+
+    &--pause {
+      @extend #{$button};
+      background-color: #a8a2a2;
+    }
+
+    &--usage {
+      @extend #{$button};
+      background-color: #a57171;
+      box-shadow: 0 3px 3px 0 #ce0808;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover:enabled {
+      transform: translateY(-10%);
+    }
+
+    &:disabled {
+      @extend %disabled;
+    }
+  }
+
+
+  &__tutorial {
+    $button: &;
+    display: inline-flex;
+    height: 35px;
+    align-items: center;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: inherit;
+    cursor: pointer;
+    background-color: #F2D6AC;
+    border: 2px solid #3e331d;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 5px;
+    padding: 0 15px;
+    margin: 0 40px;
+    color: inherit;
+    transition: transform 0.2s linear;
+    outline: none;
+
+    &--pause {
+      @extend #{$button};
+      background-color: #a8a2a2;
+    }
+
+    &--usage {
+      @extend #{$button};
+      background-color: #a57171;
+      box-shadow: 0 3px 3px 0 #ce0808;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover:enabled {
+      transform: translateY(-10%);
+    }
+
+    &:disabled {
+      @extend %disabled;
+    }
+  }
+}
