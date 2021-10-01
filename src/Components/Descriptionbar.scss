@@ -3,16 +3,15 @@
     width:100%;
     color: black;
     background-color: #D5F1AC;
-    padding: 10px 0px;
+    padding: 5px;
     font-size: 20px;
     font-style: italic;
     text-align: center;
     box-sizing: border-box;
-    transition: background 2s;
-
-    &:hover {
-        background: #E7F7D0;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .performance{

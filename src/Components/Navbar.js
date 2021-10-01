@@ -88,7 +88,7 @@ const navbar=
                 onChange={onAlgoChange}
                 id="algorithm"
                 disabled={turnOff}
-                style={{width:"120px"}}
+                style={{width:"220px"}}
             >
                 <option value="A*" defaultChecked> A* </option>
                 <option value="BFS" > BFS </option>

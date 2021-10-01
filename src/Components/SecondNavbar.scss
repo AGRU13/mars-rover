@@ -2,11 +2,11 @@
 .bottom-nav{
     background: #F1C8AC;
     box-sizing: border-box;
-    transition: background 2s;
-
-    &:hover {
-        background: #F8E3D6;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
 
     &__ul{
         transform: scale(0.9);
